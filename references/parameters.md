@@ -1,39 +1,39 @@
 # Parameter Reference
 
-Complete schemas for the two subcommands exposed by `scripts/gemini_image.py`. These are a 1:1 mirror of the `anand-92/ultimate-image-gen-mcp` tools, so MCP param ↔ CLI flag mapping is just snake_case → kebab-case (e.g. `enable_google_search` → `--enable-google-search`).
+Complete schemas for the two subcommands exposed by `scripts/gemini_image.py`.
 
 ## Contents
 
-- [generate-image](#generate-image) (MCP: `generate_image`)
-- [batch-generate](#batch-generate) (MCP: `batch_generate`)
+- [generate-image](#generate-image)
+- [batch-generate](#batch-generate)
 - [Allowed values](#allowed-values)
 - [Environment variables](#environment-variables)
 
 ## generate-image
 
-| MCP param | CLI flag | Type | Default | Notes |
-|---|---|---|---|---|
-| `prompt` | `--prompt` | string | required | Keep it short. Model fills detail via search and priors. |
-| `aspect_ratio` | `--aspect-ratio` | string | `1:1` | See allowed values. |
-| `image_size` | `--image-size` | string | `2K` | User pref: `1K`. `512px` \| `1K` \| `2K` \| `4K`. |
-| `output_format` | `--output-format` | string | `png` | `png` \| `jpeg` \| `webp`. |
-| `reference_image_paths` | `--reference-image-paths` | list[str] | `[]` | Absolute local paths. Up to 14 total (10 objects + 4 characters). |
-| `enable_google_search` | `--enable-google-search` | bool | `false` | Grounds on live web for products, people, events. |
-| `enable_image_search` | `--enable-image-search` | bool | `false` | Pulls visual references from Google Images. |
-| `response_modalities` | `--response-modalities` | list[str] | `["TEXT","IMAGE"]` | Any subset of `TEXT`, `IMAGE`. |
-| `thinking_level` | `--thinking-level` | string | `minimal` | `minimal` (fast) \| `high` (quality). |
-| — | `--model` | string | `gemini-3.1-flash-image-preview` | Override via `GEMINI_IMAGE_MODEL` env var. |
+| CLI flag | Type | Default | Notes |
+|---|---|---|---|
+| `--prompt` | string | required | Keep it short. Model fills detail via search and priors. |
+| `--aspect-ratio` | string | `1:1` | See allowed values. |
+| `--image-size` | string | `2K` | User pref: `1K`. `512px` \| `1K` \| `2K` \| `4K`. |
+| `--output-format` | string | `png` | `png` \| `jpeg` \| `webp`. |
+| `--reference-image-paths` | list[str] | `[]` | Absolute local paths. Up to 14 total (10 objects + 4 characters). |
+| `--enable-google-search` | bool | `false` | Grounds on live web for products, people, events. |
+| `--enable-image-search` | bool | `false` | Pulls visual references from Google Images. |
+| `--response-modalities` | list[str] | `["TEXT","IMAGE"]` | Any subset of `TEXT`, `IMAGE`. |
+| `--thinking-level` | string | `minimal` | `minimal` (fast) \| `high` (quality). |
+| `--model` | string | `gemini-3.1-flash-image-preview` | Override via `GEMINI_IMAGE_MODEL` env var. |
 
 ## batch-generate
 
 Shares all the flags above plus:
 
-| MCP param | CLI flag | Type | Default | Notes |
-|---|---|---|---|---|
-| `prompts` | `--prompts` | list[str] | required | Up to 8 prompts (capped by `MAX_BATCH_SIZE`). |
-| `batch_size` | `--batch-size` | int | `8` | Parallel chunk size within the list. |
+| CLI flag | Type | Default | Notes |
+|---|---|---|---|
+| `--prompts` | list[str] | required | Up to 8 prompts (capped by `GEMINI_MAX_BATCH_SIZE`). |
+| `--batch-size` | int | `8` | Parallel chunk size within the list. |
 
-All other flags (aspect ratio, size, format, reference images, search toggles, response modalities, thinking level, model) behave identically to `generate-image` and apply to every prompt in the list. Unlike what the MCP README suggests, `batch-generate` **does** accept `reference_image_paths` and `enable_google_search` — the underlying MCP implementation does too.
+All other flags behave identically to `generate-image` and apply to every prompt in the list.
 
 ## Allowed values
 

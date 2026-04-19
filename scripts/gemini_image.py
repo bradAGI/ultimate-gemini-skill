@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
-"""Standalone CLI that mirrors the tools exposed by anand-92/ultimate-image-gen-mcp.
+"""Standalone CLI for Gemini 3.1 Flash Image generation.
 
-Two subcommands with the exact parameter surface of the MCP tools:
+Two subcommands:
 
     gemini_image.py generate-image  --prompt "..."            [flags]
     gemini_image.py batch-generate  --prompts "p1" "p2" ...   [flags]
 
-Defaults, validation, and JSON output shape match the MCP's `generate_image_tool`
-and `batch_generate_images` functions, so swapping MCP calls for this CLI is
-behaviour-preserving.
+Adapted from anand-92/ultimate-image-gen-mcp.
 
 Requires: GEMINI_API_KEY (or GOOGLE_API_KEY) in the environment.
 Install:  pip install google-genai pillow
@@ -40,7 +38,7 @@ except ImportError as e:
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 log = logging.getLogger("gemini_image")
 
-# ---- Constants (mirrored from src/config/constants.py in the MCP) -----------
+# ---- Constants --------------------------------------------------------------
 
 DEFAULT_MODEL = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-3.1-flash-image-preview")
 OUTPUT_DIR = Path(os.environ.get("GEMINI_OUTPUT_DIR", str(Path.home() / "gemini_images")))
@@ -244,7 +242,7 @@ async def generate_image_tool(
     thinking_level: str = DEFAULT_THINKING_LEVEL,
     client: genai.Client | None = None,
 ) -> dict:
-    """Single-image generation. Mirrors MCP `generate_image_tool` surface."""
+    """Single-image generation."""
     validate_prompt(prompt)
     validate_aspect_ratio(aspect_ratio)
     image_size = validate_image_size(image_size)
@@ -333,7 +331,7 @@ async def batch_generate_tool(
     response_modalities: list[str] | None = None,
     thinking_level: str = DEFAULT_THINKING_LEVEL,
 ) -> dict:
-    """Batch generation. Mirrors MCP `batch_generate_images` surface."""
+    """Batch generation — runs prompts in parallel via asyncio.gather."""
     validate_prompts_list(prompts)
     validate_batch_size(batch_size)
 
@@ -421,15 +419,15 @@ def _add_common_flags(p: argparse.ArgumentParser) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     root = argparse.ArgumentParser(
-        description="Gemini image generation — CLI mirror of the ultimate-image-gen-mcp tools.",
+        description="Gemini 3.1 Flash Image generation CLI.",
     )
     sub = root.add_subparsers(dest="command", required=True)
 
-    gi = sub.add_parser("generate-image", help="Single image (MCP: generate_image)")
+    gi = sub.add_parser("generate-image", help="Single image")
     gi.add_argument("--prompt", required=True)
     _add_common_flags(gi)
 
-    bg = sub.add_parser("batch-generate", help="Multiple images in parallel (MCP: batch_generate)")
+    bg = sub.add_parser("batch-generate", help="Multiple images in parallel")
     bg.add_argument("--prompts", required=True, nargs="+",
                     help=f"Up to {MAX_BATCH_SIZE} prompts")
     bg.add_argument("--batch-size", type=int, default=MAX_BATCH_SIZE,

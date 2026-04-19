@@ -22,23 +22,23 @@ python3 <SKILL_DIR>/scripts/gemini_image.py generate-image --prompt "..." [flags
 python3 <SKILL_DIR>/scripts/gemini_image.py batch-generate --prompts "p1" "p2" ... [flags]
 ```
 
-| MCP tool         | CLI subcommand    |
-|------------------|-------------------|
-| `generate_image` | `generate-image`  |
-| `batch_generate` | `batch-generate`  |
+| Subcommand        | Purpose                                 |
+|-------------------|-----------------------------------------|
+| `generate-image`  | Single image                            |
+| `batch-generate`  | Up to 8 prompts, run in parallel        |
 
-Every flag name is the kebab-case of the corresponding MCP parameter. Defaults match the MCP exactly: `aspect_ratio=1:1`, `image_size=2K`, `output_format=png`, `thinking_level=minimal`, `batch_size=8`, `model=gemini-3.1-flash-image-preview`.
+Flag names are kebab-case (e.g. `--enable-google-search`, `--reference-image-paths`, `--thinking-level`). Defaults: `aspect_ratio=1:1`, `image_size=2K`, `output_format=png`, `thinking_level=minimal`, `batch_size=8`, `model=gemini-3.1-flash-image-preview`.
 
 Images save to `$GEMINI_OUTPUT_DIR` (default `~/gemini_images`). The script prints a JSON result on stdout — parse it to report paths back to the user.
 
 ## User preference overrides
 
-The user's global preferences override the MCP defaults when invoking this skill (unless they explicitly ask for something else):
+The user's global preferences override the defaults when invoking this skill (unless they explicitly ask for something else):
 
 - `--image-size 1K` (the user prefers 1K)
 - `--aspect-ratio 21:9` when generating banners / hero images
 
-Apply these before falling back to the MCP defaults.
+Apply these before falling back to script defaults.
 
 ## Decision tree
 

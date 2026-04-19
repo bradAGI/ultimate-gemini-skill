@@ -1,6 +1,6 @@
 # Prompt Templates
 
-26 domain-specific prompt recipes from the Ultimate Gemini MCP. Each gives a crafted prompt body plus the recommended `generate_image` params. Load this file only when the user's ask clearly maps to one of these domains.
+26 domain-specific prompt recipes, adapted from [`anand-92/ultimate-image-gen-mcp`](https://github.com/anand-92/ultimate-image-gen-mcp). Each gives a crafted prompt body plus the recommended `generate-image` params. Load this file only when the user's ask clearly maps to one of these domains.
 
 ## Contents
 
