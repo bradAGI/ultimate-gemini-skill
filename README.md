@@ -118,7 +118,7 @@ Every MCP parameter has a kebab-case CLI flag of the same name (e.g. `enable_goo
 ## Prerequisites
 
 - Python 3.11+
-- `pip install google-genai pillow`
+- `pip install -r requirements.txt` (or `pip install google-genai pillow`)
 - `GEMINI_API_KEY` (or `GOOGLE_API_KEY`) in the environment — free key: https://aistudio.google.com/app/apikey
 
 ## Install the skill
