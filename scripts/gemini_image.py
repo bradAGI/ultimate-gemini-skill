@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Standalone CLI that mirrors the tools exposed by bradAGI/ultimate-image-gen-mcp.
+"""Standalone CLI that mirrors the tools exposed by anand-92/ultimate-image-gen-mcp.
 
 Two subcommands with the exact parameter surface of the MCP tools:
 

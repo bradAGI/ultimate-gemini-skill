@@ -1,11 +1,11 @@
 ---
 name: ultimate-gemini-mcp
-description: Standalone image generation via Gemini 3.1 Flash Image (Nano Banana 2). Ships a self-contained CLI `scripts/gemini_image.py` that mirrors the `bradAGI/ultimate-image-gen-mcp` tools 1:1 — no MCP server required. Subcommands `generate-image` and `batch-generate` share the MCP's params, defaults, and JSON output shape. Use whenever the user asks to generate, create, make, design, or visualize an image, picture, photo, illustration, logo, banner, diagram, mockup, poster, character, or storyboard. Also for iterative refinement with reference images, multi-scene storyboards (batch), product shots, brand assets, and real-world-grounded generations (products, people, current events). Supports 14 aspect ratios, 512px–4K, PNG/JPEG/WebP, up to 14 reference images, Google Search + Image Search grounding, and parallel batches up to 8. Requires `GEMINI_API_KEY` (or `GOOGLE_API_KEY`). Do NOT use when the user wants a different backend (DALL·E, Midjourney, local diffusion).
+description: Standalone image generation via Gemini 3.1 Flash Image (Nano Banana 2). Ships a self-contained CLI `scripts/gemini_image.py` that mirrors the `anand-92/ultimate-image-gen-mcp` tools 1:1 — no MCP server required. Subcommands `generate-image` and `batch-generate` share the MCP's params, defaults, and JSON output shape. Use whenever the user asks to generate, create, make, design, or visualize an image, picture, photo, illustration, logo, banner, diagram, mockup, poster, character, or storyboard. Also for iterative refinement with reference images, multi-scene storyboards (batch), product shots, brand assets, and real-world-grounded generations (products, people, current events). Supports 14 aspect ratios, 512px–4K, PNG/JPEG/WebP, up to 14 reference images, Google Search + Image Search grounding, and parallel batches up to 8. Requires `GEMINI_API_KEY` (or `GOOGLE_API_KEY`). Do NOT use when the user wants a different backend (DALL·E, Midjourney, local diffusion).
 ---
 
 # Ultimate Gemini — standalone
 
-Self-contained image generation. This skill is a faithful CLI port of the MCP server at `bradAGI/ultimate-image-gen-mcp` — same defaults, same validation, same output shape — so the MCP and this skill are interchangeable from the caller's perspective.
+Self-contained image generation. This skill is a faithful CLI port of the MCP server at `anand-92/ultimate-image-gen-mcp` — same defaults, same validation, same output shape — so the MCP and this skill are interchangeable from the caller's perspective.
 
 ## Prerequisites
 

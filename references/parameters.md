@@ -1,6 +1,6 @@
 # Parameter Reference
 
-Complete schemas for the two subcommands exposed by `scripts/gemini_image.py`. These are a 1:1 mirror of the `bradAGI/ultimate-image-gen-mcp` tools, so MCP param ↔ CLI flag mapping is just snake_case → kebab-case (e.g. `enable_google_search` → `--enable-google-search`).
+Complete schemas for the two subcommands exposed by `scripts/gemini_image.py`. These are a 1:1 mirror of the `anand-92/ultimate-image-gen-mcp` tools, so MCP param ↔ CLI flag mapping is just snake_case → kebab-case (e.g. `enable_google_search` → `--enable-google-search`).
 
 ## Contents
 
