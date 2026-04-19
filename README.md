@@ -88,6 +88,33 @@ python3 scripts/gemini_image.py generate-image \
 
 Every MCP parameter has a kebab-case CLI flag of the same name (e.g. `enable_google_search` → `--enable-google-search`). Defaults match exactly.
 
+## Options at a glance
+
+**`--image-size`** (default: `2K`; user-preferred: `1K`)
+| Value    | Use for                                       |
+|----------|-----------------------------------------------|
+| `512px`  | Fastest, cheapest — thumbnails, quick iteration |
+| `1K`     | Everyday use, good balance                    |
+| `2K`     | Server default — balanced quality             |
+| `4K`     | Print, hero shots, final deliverables         |
+
+**`--aspect-ratio`** (default: `1:1`) — all 14 options:
+`1:1` · `2:3` · `3:2` · `3:4` · `4:3` · `4:5` · `5:4` · `9:16` · `16:9` · `21:9` · `1:4` · `1:8` · `4:1` · `8:1`
+
+- Square / social → `1:1`
+- Portrait → `4:5`, `2:3`
+- Landscape → `3:2`, `4:3`
+- Mobile / story → `9:16`
+- YouTube / widescreen → `16:9`
+- Cinematic / banner / hero → `21:9`
+- Pano strips → `4:1`, `8:1`, `1:4`, `1:8`
+
+**`--output-format`**: `png` (default), `jpeg`, `webp`
+**`--thinking-level`**: `minimal` (default, fast), `high` (slower, higher quality)
+**`--response-modalities`**: `TEXT IMAGE` (default), or `IMAGE` only (cleaner for logos/textures)
+**Reference images**: up to 14 via `--reference-image-paths` (10 objects + 4 characters)
+**Batch cap**: 8 prompts per `batch-generate` call, run in parallel
+
 ## Prerequisites
 
 - Python 3.11+
