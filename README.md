@@ -133,14 +133,14 @@ npx skills add bradAGI/ultimate-gemini-skill
 
 ```bash
 git clone https://github.com/bradAGI/ultimate-gemini-skill.git
-mkdir -p ~/.claude/skills/ultimate-gemini-mcp
+mkdir -p ~/.claude/skills/ultimate-gemini
 cp -r ultimate-gemini-skill/SKILL.md \
       ultimate-gemini-skill/references \
       ultimate-gemini-skill/scripts \
-      ~/.claude/skills/ultimate-gemini-mcp/
+      ~/.claude/skills/ultimate-gemini/
 ```
 
-Or install the packaged [`dist/ultimate-gemini-mcp.skill`](dist/ultimate-gemini-mcp.skill) via whatever skill installer your harness supports.
+Or install the packaged [`dist/ultimate-gemini.skill`](dist/ultimate-gemini.skill) via whatever skill installer your harness supports.
 
 ## Use the CLI directly
 
@@ -189,7 +189,7 @@ Always add `.env`, `*.key`, and `claude_desktop_config.json` to `.gitignore`. Ro
 │   └── templates.md         # 26 prompt recipes
 ├── banner.png
 └── dist/
-    └── ultimate-gemini-mcp.skill
+    └── ultimate-gemini.skill
 ```
 
 ## Credits
