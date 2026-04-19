@@ -30,6 +30,46 @@ A **standalone, agent-agnostic** skill for Gemini 3.1 Flash Image (Nano Banana 2
 
 **No MCP server required.** The skill calls the Gemini API directly. Same params, same defaults, same JSON output shape as the MCP.
 
+## Samples
+
+All three generated with this skill at **1K**, rendered by `scripts/gemini_image.py`. Commands shown.
+
+### 1. Real-world grounded photo (Google Search + Image Search)
+
+![tony hawk](samples/tony-hawk-grounded.png)
+
+```bash
+python3 scripts/gemini_image.py generate-image \
+  --prompt "Tony Hawk performing a kickflip at Venice Beach skatepark, golden hour, editorial sports photography" \
+  --aspect-ratio 16:9 --image-size 1K \
+  --enable-google-search --enable-image-search
+```
+
+The model grounded on live Google results — note the accurate "birdhouse" shirt (Tony Hawk's skate brand) and the real Venice Beach setting.
+
+### 2. Logo with legible text (`thinking_level: high`)
+
+![orbit logo](samples/orbit-logo.png)
+
+```bash
+python3 scripts/gemini_image.py generate-image \
+  --prompt "Modern minimalist logo for a coffee brand called 'Orbit', clean circular wordmark, deep blue on white, flat vector, strong silhouette" \
+  --aspect-ratio 1:1 --image-size 1K \
+  --response-modalities IMAGE --thinking-level high
+```
+
+Gemini 3.1 Flash renders text inside images legibly — hard for most image models.
+
+### 3. Cinematic 21:9 scene
+
+![astronaut](samples/astronaut-cinematic.png)
+
+```bash
+python3 scripts/gemini_image.py generate-image \
+  --prompt "Cinematic still of a lone astronaut walking across a bioluminescent alien beach at dusk, two moons on the horizon, ARRI Alexa anamorphic, teal and magenta color grade" \
+  --aspect-ratio 21:9 --image-size 1K
+```
+
 ## What it gives your agent
 
 - **Triggers** — broad description so the skill fires on "make an image", "design a logo", "give me a banner", "storyboard this", etc.
