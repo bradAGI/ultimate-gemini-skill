@@ -2,9 +2,17 @@
 
 ![banner](banner.png)
 
+## 🚀 Easiest way to install
+
+One command — no git clone, no manual copying:
+
 ```bash
 npx skills add bradAGI/ultimate-gemini-skill
 ```
+
+That's it. The skill is installed and Claude Code will pick it up on the next session. Then make sure you have `GEMINI_API_KEY` set (see [Securing your API key](#securing-your-api-key) below) and `pip install google-genai pillow` for the bundled CLI.
+
+---
 
 A **standalone** Claude Code skill for Gemini 3.1 Flash Image (Nano Banana 2). Ships a self-contained Python CLI — `scripts/gemini_image.py` — that is a 1:1 mirror of the tools exposed by the [`ultimate-image-gen-mcp`](https://github.com/anand-92/ultimate-image-gen-mcp) by [@anand-92](https://github.com/anand-92), which this skill is derived from. All credit for the underlying tool design, prompt templates, and MCP implementation goes to the original author.
 
@@ -37,6 +45,14 @@ Every MCP parameter has a kebab-case CLI flag of the same name (e.g. `enable_goo
 - `GEMINI_API_KEY` (or `GOOGLE_API_KEY`) in the environment — free key: https://aistudio.google.com/app/apikey
 
 ## Install the skill
+
+**Recommended (one command):**
+
+```bash
+npx skills add bradAGI/ultimate-gemini-skill
+```
+
+**Manual alternative** (if you don't have `npx` or prefer to see what lands where):
 
 ```bash
 git clone https://github.com/bradAGI/ultimate-gemini-skill.git
