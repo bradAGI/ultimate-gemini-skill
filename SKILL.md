@@ -29,7 +29,7 @@ python3 <SKILL_DIR>/scripts/gemini_image.py batch-generate --prompts "p1" "p2" .
 
 Flag names are kebab-case (e.g. `--enable-google-search`, `--reference-image-paths`, `--thinking-level`). Defaults: `aspect_ratio=1:1`, `image_size=2K`, `output_format=png`, `thinking_level=minimal`, `batch_size=8`, `model=gemini-3.1-flash-image-preview`.
 
-Images save to `$GEMINI_OUTPUT_DIR` (default `~/gemini_images`). The script prints a JSON result on stdout — parse it to report paths back to the user.
+Images save to `$PWD/gemini_images/` by default (a subfolder of the directory the script runs from — keeps output with the project you're working on). Override with `$GEMINI_OUTPUT_DIR`. The script prints a JSON result on stdout — parse it to report paths back to the user.
 
 ## User preference overrides
 

@@ -162,7 +162,7 @@ python3 scripts/gemini_image.py generate-image \
   --reference-image-paths /abs/path/char1.png /abs/path/char2.png
 ```
 
-Images save to `$GEMINI_OUTPUT_DIR` (default `~/gemini_images`). Override model via `GEMINI_IMAGE_MODEL` and batch cap via `GEMINI_MAX_BATCH_SIZE`.
+Images save to `$PWD/gemini_images/` by default — a subfolder of wherever you run the script, so output stays with the project you're working on. Override the location with `$GEMINI_OUTPUT_DIR`, the model with `$GEMINI_IMAGE_MODEL`, and the batch cap with `$GEMINI_MAX_BATCH_SIZE`.
 
 ## Securing your API key
 

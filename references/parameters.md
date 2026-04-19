@@ -81,6 +81,6 @@ Read at script startup.
 | Env var | Default | Notes |
 |---|---|---|
 | `GEMINI_API_KEY` | — | **Required.** Script also accepts `GOOGLE_API_KEY`. |
-| `GEMINI_OUTPUT_DIR` | `~/gemini_images` | Where generated images save. |
+| `GEMINI_OUTPUT_DIR` | `$PWD/gemini_images` | Where generated images save. Defaults to a `gemini_images/` subfolder of the directory the script runs from. |
 | `GEMINI_IMAGE_MODEL` | `gemini-3.1-flash-image-preview` | Override the default model. |
 | `GEMINI_MAX_BATCH_SIZE` | `8` | Cap on `--prompts` and `--batch-size`. |

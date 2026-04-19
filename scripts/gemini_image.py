@@ -41,7 +41,7 @@ log = logging.getLogger("gemini_image")
 # ---- Constants --------------------------------------------------------------
 
 DEFAULT_MODEL = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-3.1-flash-image-preview")
-OUTPUT_DIR = Path(os.environ.get("GEMINI_OUTPUT_DIR", str(Path.home() / "gemini_images")))
+OUTPUT_DIR = Path(os.environ.get("GEMINI_OUTPUT_DIR") or (Path.cwd() / "gemini_images")).resolve()
 
 ASPECT_RATIOS = [
     "1:1", "1:4", "1:8", "2:3", "3:2", "3:4",
